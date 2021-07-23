@@ -1,6 +1,6 @@
 locals {
   cluster_name      = var.env == "" ? var.cluster_name : "${var.env}-${var.cluster_name}"
-  cluster_node_name = formatlist("${local.cluster_name}-%02s", range(1, var.number_of_nodes + 1))
+  cluster_node_name = [for n in range(1, var.number_of_nodes + 1) : format("${local.cluster_name}-%02s", n)]
   cluster_node_config = {
     computer_name_prefix = "rcdm-n"
     location             = azurerm_resource_group.rcdm[0].location,
@@ -65,6 +65,10 @@ module "rubrik_node" {
   tags = var.tags
 }
 
-output "test" {
+output "cluster_name" {
   value = local.cluster_name
+}
+
+output "cluster_node_name" {
+  value = local.cluster_node_name
 }
