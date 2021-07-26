@@ -7,7 +7,21 @@ output "cc_image_storage_account" {
   sensitive = true
 }
 */
+
+
+output "cluster_name" {
+  value = local.cluster_name
+}
+
+output "cluster_node_name" {
+  value = local.cluster_node_name
+}
+
 output "cc_es_storage_account" {
   value     = module.rubrik_es_storage.account
   sensitive = true
+}
+
+output "node_ip" {
+  value = module.rubrik_node.nodes
 }

@@ -84,3 +84,7 @@ resource "azurerm_virtual_machine_data_disk_attachment" "cc" {
   lun                = each.value.lun
   caching            = "ReadWrite"
 }
+
+output "nodes" {
+  value = [for nic in azurerm_network_interface.nic : nic.private_ip_address]
+}

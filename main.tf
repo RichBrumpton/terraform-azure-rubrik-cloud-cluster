@@ -64,11 +64,3 @@ module "rubrik_node" {
 
   tags = var.tags
 }
-
-output "cluster_name" {
-  value = local.cluster_name
-}
-
-output "cluster_node_name" {
-  value = local.cluster_node_name
-}
