@@ -1,3 +1,8 @@
+variable "create_storage_account" {
+  type = bool
+  default = false
+}
+
 variable "env" {
   type    = string
   default = ""

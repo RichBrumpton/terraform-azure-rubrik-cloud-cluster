@@ -51,6 +51,7 @@ module "rubrik_es_storage" {
   resource_group_name      = azurerm_resource_group.rcdm[0].name
   location                 = azurerm_resource_group.rcdm[0].location
   account_replication_type = "LRS"
+  create_storage_account = var.create_storage_account
 
   tags = var.tags
 }

@@ -4,9 +4,10 @@ variable "resource_group_name" {}
 variable "location" {}
 variable "account_replication_type" {}
 variable "tags" {}
+variable "create_storage_account" {}
 
 resource "azurerm_storage_account" "this" {
-  count                    = 1
+  count                    = var.create_storage_account ? 1 : 0
   name                     = var.storage_account_name
   resource_group_name      = var.resource_group_name
   location                 = var.location
@@ -17,7 +18,7 @@ resource "azurerm_storage_account" "this" {
 }
 
 resource "azurerm_storage_container" "this" {
-  count                 = 1
+  count                    = var.create_storage_account ? 1 : 0
   name                  = var.storage_container_name
   storage_account_name  = azurerm_storage_account.this[0].name
   container_access_type = "private"
