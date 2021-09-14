@@ -38,12 +38,13 @@ variable "number_of_nodes" {
 }
 
 variable "data_disk_count" {
-  description = "Number of disks per node, set this to **0** for Cloud Cluster ES"
+  description = "Number of disks per node, set this to **1** for Cloud Cluster ES"
   type        = number
   default     = 4
 }
 
 variable "data_disk_size" {
+  description = "size of each data disk, set this to **512** for Cloud Cluster ES."
   type    = number
   default = 512
 }
