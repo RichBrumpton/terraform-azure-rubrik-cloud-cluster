@@ -62,3 +62,22 @@ variable "tags" {
   type    = map(string)
   default = {}
 }
+
+variable "cc_image_storage_account_name" {
+  default = "segaiatempccimagesa1"
+}
+variable "ss_image_container_name" {
+  default = "releases"
+}
+variable "cc_image_name" {
+  default = "rubrik-6-0-0-EA2-12277.vhd"
+}
+variable "cc_image_source_uri" {
+  default = "https://rubrikazurevhdsstdwestus.blob.core.windows.net/release/rubrik-6-0-0-EA2-12277.vhd?sr=c&sp=rl&sv=2018-03-28&st=2021-05-24T16%3A58%3A37Z&sig=97TKpHWzPOsmtvp1TMDPlxznsTezkTXcy1tXbyGGNQI%3D&se=2026-05-24T16%3A58%3A37Z"
+}
+variable "cc_storage_account_name" {
+  default = "segaiatempccessa1"
+}
+variable "cc_storage_container_name" {
+  default =  "cc-test"
+}
