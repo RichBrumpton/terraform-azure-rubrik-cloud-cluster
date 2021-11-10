@@ -33,11 +33,11 @@ resource "azurerm_resource_group" "rcdm" {
 module "rubrik_image" {
   source = "./modules/image"
 
-  image_storage_account_name   = "segaiawu2ccesimage"
-  image_storage_container_name = "releases"
-  image_source_uri             = "https://rubrikazurevhdsstdwestus.blob.core.windows.net/release/rubrik-6-0-0-EA2-12277.vhd?sr=c&sp=rl&sv=2018-03-28&st=2021-05-24T16%3A58%3A37Z&sig=97TKpHWzPOsmtvp1TMDPlxznsTezkTXcy1tXbyGGNQI%3D&se=2026-05-24T16%3A58%3A37Z"
-  image_file                   = "rubrik-6-0-0-EA2-12277.vhd"
-  image_name                   = "rubrik-6-0-0-EA2-12277"
+  image_storage_account_name   = var.image_storage_account_name #segaiawu2ccesimage
+  image_storage_container_name = var.image_storage_container_name #releases
+  image_source_uri             = var.image_source_uri #https://rubrikazurevhdsstdwestus.blob.core.windows.net/release/rubrik-6-0-0-EA2-12277.vhd?sr=c&sp=rl&sv=2018-03-28&st=2021-05-24T16%3A58%3A37Z&sig=97TKpHWzPOsmtvp1TMDPlxznsTezkTXcy1tXbyGGNQI%3D&se=2026-05-24T16%3A58%3A37Z
+  image_file                   = var.image_filename #rubrik-6-0-0-EA2-12277.vhd
+  image_name                   = var.image_name #rubrik-6-0-0-EA2-12277
   resource_group_name          = azurerm_resource_group.rcdm[0].name
   location                     = azurerm_resource_group.rcdm[0].location
   tags                         = var.tags
@@ -46,11 +46,11 @@ module "rubrik_image" {
 module "rubrik_es_storage" {
   source = "./modules/blob"
 
-  storage_account_name     = "segaiawu2ccesblob"
+  storage_account_name     = var.storage_account_name
   storage_container_name   = local.cluster_name
   resource_group_name      = azurerm_resource_group.rcdm[0].name
   location                 = azurerm_resource_group.rcdm[0].location
-  account_replication_type = "LRS"
+  account_replication_type = var.storage_account_replication_type
   create_storage_account = var.create_storage_account
 
   tags = var.tags

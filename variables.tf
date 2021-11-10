@@ -63,3 +63,37 @@ variable "tags" {
   type    = map(string)
   default = {}
 }
+
+variable "storage_account_name" {
+  type = string
+}
+
+variable "storage_account_replication_type" {
+  type = string
+  default = "LRS"
+}
+
+variable "image_storage_account_name" {
+  type = string
+  
+}
+
+variable "image_storage_container_name" {
+  type = string
+  
+}
+
+variable "image_source_uri" {
+  type = string
+  
+}
+
+variable "image_filename" {
+  type = string
+  
+}
+
+variable "image_name" {
+  type = string
+  
+}
